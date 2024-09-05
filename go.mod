@@ -1,4 +1,4 @@
-module github.com/andrew-nino/proto_auth/gen/go/auth
+module github.com/andrew-nino/proto_auth
 
 go 1.22.1
 
