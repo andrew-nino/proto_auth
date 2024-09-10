@@ -2,7 +2,9 @@ syntax = "proto3";
 
 package auth;
 
-option go_package = "andrew-nino.auth.v1; auth_v1";
+import "tagger/tagger.proto";
+
+option go_package = "gen/go/auth; auth_v1";
 
 service Auth{
     rpc Login(LoginRequest) returns (LoginResponse);
@@ -11,9 +13,9 @@ service Auth{
 }
 
 message RegisterRequest {
-    string login = 1;
-    string email = 2;
-    string password = 3;
+    string login = 1 [(tagger.tags) = "validate:\"required,gte=0,lte=8\"" ];
+    string email = 2 [(tagger.tags) = "validate:\"required,email\"" ];
+    string password = 3 [(tagger.tags) = "validate:\"required,numeric\"" ];
 }
 
 message RegisterResponse {
@@ -21,9 +23,9 @@ message RegisterResponse {
 }
 
 message LoginRequest {
-    string login = 1;
-    string email = 2;
-    int32 app_id = 3;
+    string login = 1 [(tagger.tags) = "validate:\"required,gte=0,lte=8\"" ];
+    string email = 2 [(tagger.tags) = "validate:\"required,email\"" ];
+    int32 app_id = 3 [(tagger.tags) = "validate:\"required,numeric\"" ];
 }
 
 message LoginResponse {
@@ -31,7 +33,7 @@ message LoginResponse {
 }
 
 message IsAdminRequest {
-    int64 user_id = 1;
+    int64 user_id = 1 [(tagger.tags) = "validate:\"required,numeric\"" ];
 }
 
 message IsAdminResponse {

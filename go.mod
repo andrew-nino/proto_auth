@@ -3,6 +3,7 @@ module github.com/andrew-nino/proto_auth
 go 1.22.1
 
 require (
+	github.com/srikrsna/protoc-gen-gotag v1.0.2
 	google.golang.org/grpc v1.66.0
 	google.golang.org/protobuf v1.34.2
 )
