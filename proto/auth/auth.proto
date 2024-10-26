@@ -13,9 +13,8 @@ service Auth{
 }
 
 message RegisterRequest {
-    string login = 1 [(tagger.tags) = "validate:\"required,gte=0,lte=8\"" ];
-    string email = 2 [(tagger.tags) = "validate:\"required,email\"" ];
-    string password = 3 [(tagger.tags) = "validate:\"required,numeric\"" ];
+    string email = 1 [(tagger.tags) = "validate:\"required,email\"" ];
+    string password = 2 [(tagger.tags) = "validate:\"required,lte=20\"" ];
 }
 
 message RegisterResponse {
@@ -23,8 +22,8 @@ message RegisterResponse {
 }
 
 message LoginRequest {
-    string login = 1 [(tagger.tags) = "validate:\"required,gte=0,lte=8\"" ];
-    string email = 2 [(tagger.tags) = "validate:\"required,email\"" ];
+    string email = 1 [(tagger.tags) = "validate:\"required,email\"" ];
+    string password = 2 [(tagger.tags) = "validate:\"required,lte=20\"" ];
     int32 app_id = 3 [(tagger.tags) = "validate:\"required,numeric\"" ];
 }
 
